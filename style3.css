@@ -1,0 +1,446 @@
+/* ==========================================================================
+           FONT IMPORTS & BASE RESET
+           ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: black;
+    color: white;
+}
+
+/* ==========================================================================
+   HEADER STYLES - MODIFIED FOR RIGHT NAVIGATION
+   ========================================================================== */
+header {
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: transparent;
+    filter: drop-shadow(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 3rem;
+    color: #00c3ff;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   NAVIGATION STYLES - MOVED TO RIGHT
+   ========================================================================== */
+nav {
+    margin-left: auto; /* This pushes the nav to the right */
+}
+
+nav a {
+    font-size: 1.8rem;
+    color: white;
+    margin-left: 4rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    color: #00c3ff;
+}
+
+/* ==========================================================================
+   NAVIGATION MOBILE STYLES - ALREADY ON RIGHT
+   ========================================================================== */
+@media(max-width:1000px) {
+    nav {
+        position: absolute;
+        display: none;
+        top: 0;
+        right: 0;
+        width: 50%;
+        border-left: 3px solid #00c3ff;
+        border-bottom: 3px solid #00c3ff;
+        border-bottom-left-radius: 2rem;
+        padding: 1rem solid;
+        background-color: #161616;
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+    }
+
+    nav a:hover,
+    nav a.active {
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
+}
+
+/* ==========================================
+   SEGMENT 2: MAIN CONTAINER STYLES
+   - Primary blog container layout
+   - Background and spacing settings
+   - ADDED: Top margin to create space below fixed header
+========================================== */
+.blog {
+    min-height: 100vh;
+    padding: 5rem 9%;
+    background-color: black;
+    margin-top: 8rem; /* Added space between navigation and main content */
+}
+
+/* ==========================================
+   SEGMENT 3: HEADER STYLES (REMOVED DUPLICATE)
+   - Note: This was a duplicate header style, removed to avoid conflicts
+========================================== */
+
+.h2.article-title {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #00c3ff;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #00c3ff, #0080ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+/* ==========================================
+   SEGMENT 4: BLOG POSTS LAYOUT
+   - Grid system for blog posts
+   - Container sizing and positioning
+========================================== */
+.blog-posts {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.blog-posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    gap: 3rem;
+    list-style: none;
+    padding: 0;
+}
+
+/* ==========================================
+   SEGMENT 5: BLOG POST ITEM STYLES
+   - Individual blog card styling
+   - Hover effects and transitions
+   - Pseudo-elements for visual effects
+========================================== */
+.blog-post-item {
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 195, 255, 0.1);
+    position: relative;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: slideUp 0.8s ease forwards;
+}
+
+.blog-post-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(0, 195, 255, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.blog-post-item:hover::before {
+    opacity: 1;
+}
+
+.blog-post-item:hover {
+    transform: translateY(-1rem);
+    box-shadow: 0 2rem 4rem rgba(0, 195, 255, 0.2);
+    border-color: rgba(0, 195, 255, 0.3);
+}
+
+.blog-post-item a {
+    display: block;
+    color: inherit;
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================
+   SEGMENT 6: ANIMATION DELAYS
+   - Staggered animation timing for blog posts
+   - Creates cascading entry effect
+========================================== */
+.blog-post-item:nth-child(1) { animation-delay: 0.1s; }
+.blog-post-item:nth-child(2) { animation-delay: 0.2s; }
+.blog-post-item:nth-child(3) { animation-delay: 0.3s; }
+.blog-post-item:nth-child(4) { animation-delay: 0.4s; }
+.blog-post-item:nth-child(5) { animation-delay: 0.5s; }
+.blog-post-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* ==========================================
+   SEGMENT 7: BLOG BANNER/IMAGE STYLES
+   - Featured image container styling
+   - Image hover effects and transitions
+========================================== */
+.blog-banner-box {
+    position: relative;
+    height: 25rem;
+    overflow: hidden;
+}
+
+.blog-banner-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    filter: brightness(0.8);
+}
+
+.blog-post-item:hover .blog-banner-box img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+/* ==========================================
+   SEGMENT 8: BLOG CONTENT STYLES
+   - Text content styling within blog cards
+   - Meta information, categories, titles
+   - Typography and color schemes
+========================================== */
+.blog-content {
+    padding: 2.5rem;
+}
+
+.blog-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.blog-category {
+    background: linear-gradient(135deg, #00c3ff, #0080ff);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.dot {
+    width: 0.4rem;
+    height: 0.4rem;
+    background-color: #666;
+    border-radius: 50%;
+    margin: 0 1.5rem;
+}
+
+.blog-meta time {
+    color: #888;
+    font-size: 1.3rem;
+}
+
+.h3.blog-item-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+.blog-post-item:hover .h3.blog-item-title {
+    color: #00c3ff;
+}
+
+.blog-text {
+    font-size: 1.5rem;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   SEGMENT 9: ANIMATIONS
+   - Keyframe definitions for entry animations
+========================================== */
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   SEGMENT 10: RESPONSIVE - LARGE SCREENS
+   - Styles for screens up to 1200px
+   - Adjustments for desktop/laptop displays
+========================================== */
+@media (max-width: 1200px) {
+    .blog {
+        padding: 5rem 7%;
+    }
+}
+
+/* ==========================================
+   SEGMENT 11: RESPONSIVE - TABLETS
+   - Styles for screens up to 768px
+   - Layout adjustments for tablet devices
+========================================== */
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+
+    .blog {
+        padding: 4rem 5%;
+        margin-top: 7rem; /* Adjusted for smaller screens */
+    }
+
+    .h2.article-title {
+        font-size: 4rem;
+    }
+
+    .blog-posts-list {
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap: 2rem;
+    }
+
+    .blog-banner-box {
+        height: 20rem;
+    }
+
+    .blog-content {
+        padding: 2rem;
+    }
+}
+
+/* ==========================================
+   SEGMENT 12: RESPONSIVE - SMALL TABLETS
+   - Styles for screens up to 600px
+   - Further layout optimizations
+========================================== */
+@media (max-width: 600px) {
+    .blog {
+        margin-top: 6rem; /* Adjusted for smaller screens */
+    }
+
+    .blog-posts-list {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .blog-banner-box {
+        height: 18rem;
+    }
+
+    .h3.blog-item-title {
+        font-size: 2rem;
+    }
+
+    .blog-content {
+        padding: 1.5rem;
+    }
+}
+
+/* ==========================================
+   SEGMENT 13: RESPONSIVE - MOBILE
+   - Styles for screens up to 480px
+   - Mobile-optimized layout and typography
+========================================== */
+@media (max-width: 480px) {
+    .blog {
+        padding: 3rem 4%;
+        margin-top: 5rem; /* Adjusted for mobile screens */
+    }
+
+    .h2.article-title {
+        font-size: 3.5rem;
+    }
+
+    .blog-posts-list {
+        gap: 1.5rem;
+    }
+
+    .blog-banner-box {
+        height: 16rem;
+    }
+
+    .blog-content {
+        padding: 1.2rem;
+    }
+
+    .h3.blog-item-title {
+        font-size: 1.8rem;
+    }
+
+    .blog-text {
+        font-size: 1.4rem;
+    }
+}
+
+/* ==========================================
+   SEGMENT 14: SCROLLBAR STYLING
+   - Custom scrollbar appearance
+   - Consistent with overall design theme
+========================================== */
+::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00c3ff, #0080ff);
+    border-radius: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0080ff, #00c3ff);
+}
