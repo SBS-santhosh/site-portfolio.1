@@ -1,9 +1,7 @@
-/* ==========================================
-   SEGMENT 1: BASE & RESET STYLES
-   - Font imports
-   - Universal reset and base styles
-   - HTML and body fundamental styling
-========================================== */
+/* ==========================================================================
+           FONT IMPORTS & BASE RESET
+           ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
 * {
     margin: 0;
@@ -17,16 +15,14 @@
 
 html {
     font-size: 62.5%;
-    scroll-behavior: smooth;
 }
 
 body {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     overflow-x: hidden;
-    background-color: #0a0a0a;
+    background-color: black;
     color: white;
-    line-height: 1.6;
 }
 
 /* ==========================================================================
@@ -123,7 +119,7 @@ nav a.active {
 .blog {
     min-height: 100vh;
     padding: 5rem 9%;
-    background-color: #0a0a0a;
+    background-color: black;
     margin-top: 8rem; /* Added space between navigation and main content */
 }
 
