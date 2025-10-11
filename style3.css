@@ -59,7 +59,7 @@ header {
    NAVIGATION STYLES - MOVED TO RIGHT
    ========================================================================== */
 nav {
-    margin-left: auto; /* This pushes the nav to the right */
+    margin-left: auto;
 }
 
 nav a {
@@ -112,22 +112,17 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 2: MAIN CONTAINER STYLES
-   - Primary blog container layout
-   - Background and spacing settings
-   - ADDED: Top margin to create space below fixed header
 ========================================== */
 .blog {
     min-height: 100vh;
     padding: 5rem 9%;
     background-color: black;
-    margin-top: 8rem; /* Added space between navigation and main content */
+    margin-top: 8rem;
 }
 
 /* ==========================================
-   SEGMENT 3: HEADER STYLES (REMOVED DUPLICATE)
-   - Note: This was a duplicate header style, removed to avoid conflicts
+   SEGMENT 3: HEADER STYLES
 ========================================== */
-
 .h2.article-title {
     font-size: 5rem;
     font-weight: 700;
@@ -143,9 +138,7 @@ nav a.active {
 }
 
 /* ==========================================
-   SEGMENT 4: BLOG POSTS LAYOUT
-   - Grid system for blog posts
-   - Container sizing and positioning
+   SEGMENT 4: BLOG POSTS LAYOUT - 3 COLUMNS
 ========================================== */
 .blog-posts {
     max-width: 120rem;
@@ -154,7 +147,7 @@ nav a.active {
 
 .blog-posts-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
     list-style: none;
     padding: 0;
@@ -162,9 +155,6 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 5: BLOG POST ITEM STYLES
-   - Individual blog card styling
-   - Hover effects and transitions
-   - Pseudo-elements for visual effects
 ========================================== */
 .blog-post-item {
     background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
@@ -210,8 +200,6 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 6: ANIMATION DELAYS
-   - Staggered animation timing for blog posts
-   - Creates cascading entry effect
 ========================================== */
 .blog-post-item:nth-child(1) { animation-delay: 0.1s; }
 .blog-post-item:nth-child(2) { animation-delay: 0.2s; }
@@ -222,13 +210,14 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 7: BLOG BANNER/IMAGE STYLES
-   - Featured image container styling
-   - Image hover effects and transitions
 ========================================== */
 .blog-banner-box {
     position: relative;
     height: 25rem;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .blog-banner-box img {
@@ -239,6 +228,14 @@ nav a.active {
     filter: brightness(0.8);
 }
 
+.blog-banner-box img.center-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
 .blog-post-item:hover .blog-banner-box img {
     transform: scale(1.1);
     filter: brightness(1);
@@ -246,9 +243,6 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 8: BLOG CONTENT STYLES
-   - Text content styling within blog cards
-   - Meta information, categories, titles
-   - Typography and color schemes
 ========================================== */
 .blog-content {
     padding: 2.5rem;
@@ -306,7 +300,6 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 9: ANIMATIONS
-   - Keyframe definitions for entry animations
 ========================================== */
 @keyframes slideUp {
     to {
@@ -317,19 +310,19 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 10: RESPONSIVE - LARGE SCREENS
-   - Styles for screens up to 1200px
-   - Adjustments for desktop/laptop displays
 ========================================== */
 @media (max-width: 1200px) {
     .blog {
         padding: 5rem 7%;
     }
+    
+    .blog-posts-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* ==========================================
    SEGMENT 11: RESPONSIVE - TABLETS
-   - Styles for screens up to 768px
-   - Layout adjustments for tablet devices
 ========================================== */
 @media (max-width: 768px) {
     html {
@@ -338,7 +331,7 @@ nav a.active {
 
     .blog {
         padding: 4rem 5%;
-        margin-top: 7rem; /* Adjusted for smaller screens */
+        margin-top: 7rem;
     }
 
     .h2.article-title {
@@ -346,7 +339,7 @@ nav a.active {
     }
 
     .blog-posts-list {
-        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        grid-template-columns: 1fr;
         gap: 2rem;
     }
 
@@ -361,12 +354,10 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 12: RESPONSIVE - SMALL TABLETS
-   - Styles for screens up to 600px
-   - Further layout optimizations
 ========================================== */
 @media (max-width: 600px) {
     .blog {
-        margin-top: 6rem; /* Adjusted for smaller screens */
+        margin-top: 6rem;
     }
 
     .blog-posts-list {
@@ -389,13 +380,11 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 13: RESPONSIVE - MOBILE
-   - Styles for screens up to 480px
-   - Mobile-optimized layout and typography
 ========================================== */
 @media (max-width: 480px) {
     .blog {
         padding: 3rem 4%;
-        margin-top: 5rem; /* Adjusted for mobile screens */
+        margin-top: 5rem;
     }
 
     .h2.article-title {
@@ -425,8 +414,6 @@ nav a.active {
 
 /* ==========================================
    SEGMENT 14: SCROLLBAR STYLING
-   - Custom scrollbar appearance
-   - Consistent with overall design theme
 ========================================== */
 ::-webkit-scrollbar {
     width: 0.8rem;
@@ -443,4 +430,41 @@ nav a.active {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #0080ff, #00c3ff);
+}
+
+
+
+/* ==========================================================================
+   STUDY MATERIALS BUTTON STYLING
+   Add this to the bottom of your style3.css file
+   ========================================================================== */
+
+.study-materials-link {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 195, 255, 0.2);
+}
+
+.materials-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: linear-gradient(135deg, #00c3ff, #0080ff);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.materials-btn:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 195, 255, 0.3);
+  background: linear-gradient(135deg, #0080ff, #00c3ff);
+}
+
+.materials-btn i {
+  font-size: 1.6rem;
 }
